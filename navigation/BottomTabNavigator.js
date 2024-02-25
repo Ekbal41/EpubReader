@@ -6,8 +6,8 @@ import { createStackNavigator } from "@react-navigation/stack";
 import { useColorScheme } from "react-native";
 
 import Colors from "../constants/Colors";
-import TabOneScreen from "../screens/TabOneScreen";
-import TabTwoScreen from "../screens/TabTwoScreen";
+import LibraryScreenTab from "../screens/LibraryScreenTab";
+import SearchScreenTab from "../screens/SearchScreenTab";
 
 const BottomTab = createBottomTabNavigator();
 
@@ -16,26 +16,34 @@ export default function BottomTabNavigator() {
 
   return (
     <BottomTab.Navigator
-      initialRouteName="TabOne"
-      screenOptions={{ tabBarActiveTintColor: Colors[colorScheme].tint }}
+      initialRouteName="BottomTab"
+      screenOptions={{
+        tabBarActiveTintColor: "white",
+        tabBarStyle: {
+          backgroundColor: "black"
+        }
+      }}
+      tabBarOptions={{
+        showLabel: false,
+      }}
     >
       <BottomTab.Screen
-        name="TabOne"
+        name="library"
         component={TabOneNavigator}
         options={{
           headerShown: false,
           tabBarIcon: ({ color }) => (
-            <TabBarIcon name="ios-code" color={color} />
+            <TabBarIcon name="library" color={color} />
           ),
         }}
       />
       <BottomTab.Screen
-        name="TabTwo"
+        name="search"
         component={TabTwoNavigator}
         options={{
           headerShown: false,
           tabBarIcon: ({ color }) => (
-            <TabBarIcon name="ios-code" color={color} />
+            <TabBarIcon name="search" color={color} />
           ),
         }}
       />
@@ -57,9 +65,9 @@ function TabOneNavigator() {
   return (
     <TabOneStack.Navigator>
       <TabOneStack.Screen
-        name="TabOneScreen"
-        component={TabOneScreen}
-        options={{ headerTitle: "Tab One Title" }}
+        name="library-index"
+        component={LibraryScreenTab}
+        options={{ headerTitle: "Library" }}
       />
     </TabOneStack.Navigator>
   );
@@ -71,9 +79,9 @@ function TabTwoNavigator() {
   return (
     <TabTwoStack.Navigator>
       <TabTwoStack.Screen
-        name="TabTwoScreen"
-        component={TabTwoScreen}
-        options={{ headerTitle: "Tab Two Title" }}
+        name="search-index"
+        component={SearchScreenTab}
+        options={{ headerTitle: "Search" }}
       />
     </TabTwoStack.Navigator>
   );

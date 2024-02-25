@@ -11,14 +11,14 @@ export default {
     screens: {
       Root: {
         screens: {
-          TabOne: {
+          Library: {
             screens: {
-              TabOneScreen: "one",
+              LibraryScreenTab: "library-index",
             },
           },
-          TabTwo: {
+          Search: {
             screens: {
-              TabTwoScreen: "two",
+              SearchScreenTab: "search-index",
             },
           },
         },
